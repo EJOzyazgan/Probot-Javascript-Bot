@@ -12,11 +12,14 @@ router.post('/bet', function (req, res, next) {
   const p = gs.players;
   const me = p[gs.me];
 
+  let bet = 0;
+
   if (me.cards[0].rank == me.cards[1].rank)
-    return res.status(200).send(gs.minimumRaiseAmount * 2);
+    bet = gs.minimumRaiseAmount * 2;
   else if (me.chipsBet > 0)
-    return res.status(200).send(gs.callAmount);
-  return res.status(200).send(0);
+    bet = gs.callAmount;
+
+  return res.status(200).send('' + bet);
 });
 
 module.exports = router;
