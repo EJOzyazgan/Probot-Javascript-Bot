@@ -8,7 +8,7 @@ var router = express.Router();
 //  If you have two of a kind raises for twice the minimum amount
 //  Otherwise calls
 router.post('/bet', function (req, res, next) {
-  let gs = game_state['state']
+  let gs = req.body['state']
   let p = gs['players']
   let me = p[gs['me']]
 
