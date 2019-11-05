@@ -44,15 +44,13 @@ router.post('/bet', function (req, res, next) {
   else if (me['cards'][1]['rank'] === 'A')
     rank += 14;
 
-  let myBet = 0
+  let myBet = gs['minimumRaiseAmount'];
   let shouldLeave = false;
 
   if (rank >= 24 && me['chips'] >= gs['minimumRaiseAmount'] * 2)
     myBet = gs['minimumRaiseAmount'] * 2;
   else if (rank >= 20 && me['chips'] >= gs['minimumRaiseAmount'] * 1.5)
     myBet = gs['minimumRaiseAmount'] * 1.5;
-  else if (rank >= 16 && me['chips'] >= gs['minimumRaiseAmount'])
-    myBet = gs['minimumRaiseAmount'];
 
   if (me['chips'] >= me['buyIn'] * 1.5) 
     shouldLeave = true;
